@@ -2,11 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: jonatanblue/gitlab-ci-terraform:latest
+      - image: hashicorp/terraform:0.12.3
     steps:
       - checkout
       - run:
           name: Validate terraform code
           command: |
-            terraform init
-            terraform validate -check-variables=false
+            terraform init -backend=false
+            terraform validate -json
