@@ -2,8 +2,6 @@
 
 Terraform module to configure a basic default set of firewall rules on DigitalOcean, based on personal preferences. It creates outbound rules for http, https, dns, ntp and ssh traffic, and inbound rules for ssh, with various configuration options.
 
-[![CircleCI](https://circleci.com/gh/thojkooi/terraform-digitalocean-firewall-rules/tree/master.svg?style=svg)](https://circleci.com/gh/thojkooi/terraform-digitalocean-firewall-rules/tree/master)
-
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Firewall rules](#firewall-rules)
@@ -12,7 +10,7 @@ Terraform module to configure a basic default set of firewall rules on DigitalOc
 
 ## Requirements
 
-- Terraform >= v0.11.7
+- Terraform >= v0.12.0
 - Digitalocean account / API token with write access
 
 ## Usage
@@ -21,6 +19,8 @@ Basic usage example:
 
 ```hcl
 provider "digitalocean" {
+    token = var.do_token
+    version = "~> 1.4"
 }
 
 resource "digitalocean_tag" "environment" {
@@ -28,11 +28,11 @@ resource "digitalocean_tag" "environment" {
 }
 
 module "default-firewall" {
-    source  = "thojkooi/firewall-rules/digitalocean"
-    version = "1.0.0"
+    source   = "github.com/cpxpratik/terraform-digitalocean-firewall-rules.git?ref=master"
+    do_token = var.do_token
 
-    prefix  = "dev"
-    tags    = ["${digitalocean_tag.environment.id}"]
+    prefix = "dev"
+    tags   = [digitalocean_tag.environment.id]
 }
 ```
 
@@ -40,6 +40,8 @@ Disable ssh outbound connections:
 
 ```hcl
 provider "digitalocean" {
+    token = var.do_token
+    version = "~> 1.4"
 }
 
 resource "digitalocean_tag" "environment" {
@@ -47,11 +49,11 @@ resource "digitalocean_tag" "environment" {
 }
 
 module "default-firewall" {
-    source  = "thojkooi/firewall-rules/digitalocean"
-    version = "1.0.0"
+    source   = "github.com/cpxpratik/terraform-digitalocean-firewall-rules.git?ref=master"
+    do_token = var.do_token
 
     prefix                         = "dev"
-    tags                           = ["${digitalocean_tag.environment.id}"]
+    tags                           = [digitalocean_tag.environment.id]
     allowed_outbound_ssh_addresses = []
 }
 ```
