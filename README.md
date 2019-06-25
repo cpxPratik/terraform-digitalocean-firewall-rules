@@ -2,6 +2,8 @@
 
 Terraform module to configure a basic default set of firewall rules on DigitalOcean, based on personal preferences. It creates outbound rules for http, https, dns, ntp and ssh traffic, and inbound rules for ssh, with various configuration options.
 
+[![CircleCI](https://circleci.com/gh/cpxPratik/terraform-digitalocean-firewall-rules/tree/master.svg?style=svg)](https://circleci.com/gh/cpxPratik/terraform-digitalocean-firewall-rules/tree/master)
+
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Firewall rules](#firewall-rules)
