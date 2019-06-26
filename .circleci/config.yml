@@ -9,4 +9,4 @@ jobs:
           name: Validate terraform code
           command: |
             terraform init -backend=false
-            terraform validate -json
+            terraform validate
