@@ -60,7 +60,6 @@ module "default-firewall" {
 }
 ```
 
-
 ## Firewall rules
 
 The following rules will be created:
