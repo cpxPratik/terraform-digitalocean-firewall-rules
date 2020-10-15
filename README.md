@@ -12,7 +12,7 @@ Terraform module to configure a basic default set of firewall rules on DigitalOc
 
 ## Requirements
 
-- Terraform = v0.12.x
+- Terraform >= 0.13.x
 - Digitalocean account / API token with write access
 
 ## Usage
@@ -22,7 +22,6 @@ Basic usage example:
 ```hcl
 provider "digitalocean" {
     token = var.do_token
-    version = "~> 1.4"
 }
 
 resource "digitalocean_tag" "environment" {
@@ -43,7 +42,6 @@ Disable ssh outbound connections:
 ```hcl
 provider "digitalocean" {
     token = var.do_token
-    version = "~> 1.4"
 }
 
 resource "digitalocean_tag" "environment" {
