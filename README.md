@@ -12,7 +12,7 @@ Terraform module to configure a basic default set of firewall rules on DigitalOc
 
 ## Requirements
 
-- Terraform >= v0.12.0
+- Terraform = v0.12.x
 - Digitalocean account / API token with write access
 
 ## Usage
