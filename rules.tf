@@ -1,6 +1,5 @@
 provider "digitalocean" {
   token   = var.do_token
-  version = "~> 1.4"
 }
 
 resource "digitalocean_firewall" "outbound-http" {
